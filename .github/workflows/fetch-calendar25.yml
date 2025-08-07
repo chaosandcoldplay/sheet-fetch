@@ -1,0 +1,24 @@
+name: Fetch year25 JSON from OpenSheet
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch JSON from OpenSheet
+        run: |
+          curl -sSL https://opensheet.elk.sh/1S5taRbn7fCozVmemopER13V0gc8aSd2FdBM7Jd2485c/year25 -o year25.json
+
+      - name: commit & push year25.json
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add year25.json || echo "No changes to commit"
+          git commit -m "update year25.json" || echo "No changes"
+          git push
