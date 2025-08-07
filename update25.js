@@ -8,6 +8,6 @@ https.get(url, (res) => {
   res.on("data", chunk => data += chunk);
   res.on("end", () => {
     fs.writeFileSync("year25.json", data);
-    console.log("Saved year25.json");
+    console.log("saved year25.json");
   });
 });
