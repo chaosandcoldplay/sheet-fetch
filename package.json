@@ -1,0 +1,9 @@
+{
+  "name": "calendar-json",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "update.js",
+  "scripts": {
+    "update": "node update.js"
+  }
+}
